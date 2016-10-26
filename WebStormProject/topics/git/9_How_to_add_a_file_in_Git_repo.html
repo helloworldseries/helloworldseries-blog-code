@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>First check-in using Git repository</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../../css/clean-blog.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--<script type="text/javascript">optimizeYouTubeEmbeds()</script>-->
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="../../index.html">Arpit Jain Bio</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="../../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="posts_git.html">GIT</a>
+                </li>
+                <li>
+                    <a href="../maven/posts_maven.html">Maven</a>
+                </li>
+                <li>
+                    <a href="../j2ee/posts_j2ee.html">J2EE</a>
+                </li>
+                <li>
+                    <a href="posts_tomcat.html">Java Collections</a>
+                </li>
+                <li>
+                    <a href="posts_protractor.html">Protractor</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<hr class="small">
+<hr class="small">
+<hr class="small">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-">
+                <div class="post-heading">
+                    <h1>How to push a new file into git repository.</h1>
+                    <p><span class="meta">Posted by <a href="#">Arpit Jain</a> on August 09, 2016</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 class="section-heading">Multiple ways to push a file into git repository</h2>
+                <p>In layman's terms <code>git push</code> is similar to <code>SVN commit</code> . <code>git commit</code> is different, we will cover that also.</p>
+                <p>Git allows three ways to push a file using - </p>
+                <ol>
+                    <p>
+                        <li>Command line (<code>bash terminal</code> or any other client)</li>
+                    </p>
+                    <p>
+                        <li><code>git gui</code> (or any other gui client) - will cover in some other tutotial</li>
+                    </p>
+                    <p>
+                        <li>Drag-n-drop to <code><a href="https://github.com">Github repository</a></code> - will cover in some other tutotial.</li>
+                    </p>
+                </ol>
+                <h2 class="section-heading">Let's use bash terminal to push a file.</h2>
+                <ol>
+                    <p>
+                        <li>
+                            Open bash terminal.
+                            <p><img class="img-responsive" src="../../img/git/git-bash-terminal.png" alt=""></p>
+                        </li>
+                    </p>
+                    <p>
+                        <li>
+                    <p>Navigate to <code>C:\MyGITRepo\</code>.(This directory was created in <a href="8_How_to_init_Git_repo.html">How to init git repo</a>).</p>
+                        <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'><span style='color:#bb7977; font-weight:bold; '>cd</span> C<span style='color:#808030; '>:</span><span style='color:#0f69ff; '>\M</span>yGITRepo
+</pre>
+                        </li>
+                    </p>
+                    <p>
+                        <li>
+                            <p>Use your favorite editor to create a file i.e. helloworldseries.txt and save into <code>C:\MyGITRepo\</code>.</p>
+                            <p><img class="img-responsive" src="../../img/git/git-add-file.PNG" alt=""></p>
+                        </li>
+                    </p>
+
+                    <p>
+                        <li>
+                            <p>Switch to bash terminal and execute command to add a file.</p>
+                    <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git add helloworld.txt<span style='color:#800000; font-weight:bold; '></span>
+</pre>
+                        </li>
+                    </p>
+
+                    <p>
+                        <li>
+                            <p>Now commit this file using <code>git commit</code>, this is different from <code>SVN commit</code>.</p>
+                            <p><code>SVN commit</code> checks-in the file into SVN repo however, <code>git commit</code> checks-in the file into local git repo only.</p>
+                            <p>To check-in into central git repo (<code>https://github.com/helloworldseries/mytest.git</code>), we will use <code>git push</code>, that we will see in a moment.</p>
+                                <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git commit helloworld<span style='color:#800000; font-weight:bold; '>.</span>txt -m <span style='color:#0000e6; '>"commit message"</span>
+</pre>
+                            <p><img class="img-responsive" src="../../img/git/git-commit-file.PNG" alt=""></p>
+                        </li>
+                    </p>
+
+                    <p>
+                        <li>
+                            <p>Still we have not connected to network and all the git operations were done on local machine (local git repo)</p>
+                            <p>Let's connect to internet and add central git repo (<code>https://github.com/helloworldseries/mytest.git</code>) as remote into your local git repo, so that everytime, git client would automaticall connect to this remote.</p>
+                            <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git remote add origin <span style='color:#e34adc; '>&lt;</span>github-repo-https-url<span style='color:#e34adc; '>></span>
+</pre>
+                            <p>
+                                Replace<code>&lt;github-repo-https-url&gt;</code> in above command with your github repo HTTPS url. i.e. I need to use <code>https://github.com/helloworldseries/mytest.git</code>.
+                            </p>
+
+                            <p>So the final command would be..</p>
+                    <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git remote add origin https<span style='color:#808030; '>:</span><span style='color:#40015a; '>/</span><span style='color:#40015a; '>/github.com/helloworldseries/mytest.git</span>
+</pre>
+
+                        <li>
+                            <p>Before we can push our file, let's find out what is the remote name, we have just added(default will be <code>origin</code>). This remote name will be used in push command.</p>
+                            <p>Let's push all the changes to remote repo, which are commited (in our case one file i.e. helloworld.txt).</p>
+                                <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git remote
+    </pre>
+                            <p><img class="img-responsive" src="../../img/git/git-remote.PNG" alt=""></p>
+                        </li>
+                        <li>
+                            <p>
+                                As our bash terminal already knows about git remote repo, so we are good to talk to remote repo.
+                            </p>
+                            <p> Command to push the file(s) - </p>
+                            <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git push <span style='color:#e34adc; '>&lt;</span>remote-name<span style='color:#e34adc; '>></span> <span style='color:#e34adc; '>&lt;</span>branch-name<span style='color:#e34adc; '>></span>
+</pre>
+                            <p>
+                                Replace<code>&lt;remote-name&gt;</code> with <code>origin</code> and <code>&lt;branch-name&gt;</code> with <code>master</code>.
+                            </p>
+                            <p>
+                                We are using <code>master</code> branch for all operations. In real life, you would probably use some other branch name and not master.
+                            </p>
+                            <p>So the final command would be..</p>
+                            <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'>git push <span style='color:#44aadd; '>-u</span> origin master
+</pre>
+                            <p><code>-u</code> will prompt for your github userid and password. After successful authentication, all files in committed state in local repo will be pushed to remote tepo.</p>
+                            <p><img class="img-responsive" src="../../img/git/git-push.PNG" alt=""></p>
+                        </li>
+                        <li>
+                            <p>Let's verify our changes in <a href="https://github.com/helloworldseries/mytest">Our Github repository.</a></p>
+                            <p><img class="img-responsive" src="../../img/git/git-push-verify.PNG" alt=""></p>
+                            <p>Next click on the file - helloworld.txt and check the content.</p>
+                            <p><img class="img-responsive" src="../../img/git/git-push-verify1.PNG" alt=""></p>
+                        </li>
+
+                        <li>
+                            <p>
+                                If you have reached to this step, it means that you have successfully pushed your first file into github repository.
+                            </p>
+                            <p>It's not a time to relax. Let's move on to next tutorial and see how to modify and push the file back to github repo.</p>
+                        </li>
+                    <li>
+                        <p>
+                            Before we move on to next tutorial, let's summarize all the commands used in this tutorial.
+                        <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px;'><span style='color:#bb7977; font-weight:bold; '>cd</span> C<span style='color:#808030; '>:</span><span style='color:#0f69ff; '>\M</span>yGITRepo
+git add helloworld<span style='color:#800000; font-weight:bold; '>.</span>txt
+git commit helloworld<span style='color:#800000; font-weight:bold; '>.</span>txt -m <span style='color:#0000e6; '>"commit message"</span>
+git remote add origin https<span style='color:#808030; '>:</span><span style='color:#40015a; '>/</span><span style='color:#40015a; '>/github.com/helloworldseries/mytest.git</span>
+git remote
+git push <span style='color:#44aadd; '>-u</span> origin master
+</pre>
+                        </p>
+                    </li>
+                    </p>
+                </ol>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="../../js/jqBootstrapValidation.js"></script>
+<script src="../../js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="../../js/clean-blog.min.js"></script>
+
+</body>
+</html>

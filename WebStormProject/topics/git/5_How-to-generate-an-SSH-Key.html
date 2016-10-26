@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>GIT - How to generate an SSH key</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../../css/clean-blog.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+
+    <link href="../../css/hws.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+    <![endif]-->
+    <!--<script type="text/javascript">optimizeYouTubeEmbeds()</script>-->
+    <script>
+        function copyToClipboard(elementId) {
+
+            alert('in copy to clipboard..');
+            // Create an auxiliary hidden input
+            var aux = document.createElement("input");
+
+            // Get the text from the element passed into the input
+            aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+
+            // Append the aux input to the body
+            document.body.appendChild(aux);
+
+            // Highlight the content
+            aux.select();
+
+            // Execute the copy command
+            document.execCommand("copy");
+
+            // Remove the input from the body
+            document.body.removeChild(aux);
+
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="../../index.html">Arpit Jain Bio</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="../../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="posts_git.html">GIT</a>
+                </li>
+                <li>
+                    <a href="../maven/posts_maven.html">Maven</a>
+                </li>
+                <li>
+                    <a href="../j2ee/posts_j2ee.html">J2EE</a>
+                </li>
+                <li>
+                    <a href="posts_tomcat.html">Java Collections</a>
+                </li>
+                <li>
+                    <a href="posts_protractor.html">Protractor</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<hr class="small">
+<hr class="small">
+<hr class="small">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-">
+                <div class="post-heading">
+                    <h1>How to generate an SSH key</h1>
+                    <span class="meta">Posted by <a href="#">Arpit Jain</a> on August 09, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <hr class="small"/>
+
+                <h2 class="section-heading">What are SSH Keys and why to use them?</h2>
+                <hr class="small"/>
+                <img class="img-responsive" src="../../img/git/ssh-keys.jpg" alt="">
+
+                <p>SSH keys serve as a means of identifying yourself to an SSH server using public-key cryptography and
+                    challenge-response authentication.</p>
+
+                <img class="img-responsive" src="../../img/common/public-private-cryptography.jpg" alt="">
+
+                <p>One immediate advantage this method has over traditional password authentication is that you can be
+                    authenticated by the server without ever having to send your password over the network. Anyone
+                    eavesdropping on your connection will not be able to intercept and crack your password because it is
+                    never actually transmitted. Additionally, using SSH keys for authentication virtually eliminates the
+                    risk posed by brute-force password attacks by drastically reducing the chances of the attacker
+                    correctly guessing the proper credentials.</p>
+
+                <p>As well as offering additional security, SSH key authentication can be more convenient than the more
+                    traditional password authentication. When used with a program known as an SSH agent, SSH keys can
+                    allow you to connect to a server, or multiple servers, without having to remember or enter your
+                    password for each system.</p>
+
+                <p><i>If still, SSH keys seem to be unclear to you, don't worry. We will cover this in Hello World" way,
+                    but now, sometime later.</i></p>
+
+                <p>Let's focus on setting up SSH key and able to connect to github server.</p>
+
+                <h2 class="section-heading">Generating a new SSH key</h2>
+
+                <ol>
+                    <li>Open Git Bash.</li>
+                    <hr class="small"/>
+
+                    <li>Paste the text below, substituting <code>"your_email@example.com"</code> your GitHub email address.</li>
+
+                    <pre style='color:#000000;background:#ffffff;border: 1px solid #0085a1 ;margin-top: 10px;margin-bottom: 50px; font-size: 18px;'><span style='color:#797997; '>$</span> ssh-keygen <span style='color:#44aadd; '>-t</span> rsa <span style='color:#44aadd; '>-b</span> <span style='color:#008c00; '>4096</span> -C <span style='color:#0000e6; '>"your_email@example.com"</span>
+<span style='color:#696969; '># Creates a new ssh key, using the provided email as a label</span>
+Generating <span style='color:#40015a; '>public/private</span> rsa key pair<span style='color:#800000; font-weight:bold; '>.</span>
+</pre>
+
+                    <li>Press Enter, when you're prompted to "Enter a file in which to save the key". This accepts the default file location.</li>
+                    <pre style='color:#000000;background:#ffffff;border: 1px solid #0085a1 ;margin-top: 10px;margin-bottom: 50px; font-size: 18px;'>Enter a file <span style='color:#800000; font-weight:bold; '>in</span> which to save the key <span style='color:#800080; '>(</span><span style='color:#40015a; '>/Users/you</span><span style='color:#40015a; '>/</span><span style='color:#800000; font-weight:bold; '>.</span><span style='color:#40015a; '>ssh/id_rsa</span><span style='color:#800080; '>)</span><span style='color:#808030; '>:</span> <span style='color:#808030; '>[</span><span style='color:#0000e6; '>Press enter</span><span style='color:#808030; '>]</span>
+                    </pre>
+                    <hr class="small"/>
+
+                    <li>At the prompt, type a secure passphrase.</li>
+                    <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:15px;margin-bottom: 50px;font-size:18px'>Enter passphrase <span style='color:#800080; '>(</span>empty <span style='color:#800000; font-weight:bold; '>for</span> no passphrase<span style='color:#800080; '>)</span><span style='color:#808030; '>:</span> <span style='color:#808030; '>[</span><span style='color:#0000e6; '>Type a passphrase</span><span style='color:#808030; '>]</span>
+Enter same passphrase again<span style='color:#808030; '>:</span> <span style='color:#808030; '>[</span><span style='color:#0000e6; '>Type passphrase again</span><span style='color:#808030; '>]</span>
+</pre>
+                </ol>
+                <hr class="small"/>
+
+
+                <h2 class="section-heading">Adding your SSH key to the ssh-agent</h2>
+                <ol>
+                    <li>Ensure <code>ssh-agent</code> is enabled:</li>
+                    <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px'><span style='color:#696969; '># start the ssh-agent in the background</span>
+<span style='color:#797997; '>$</span> <span style='color:#bb7977; font-weight:bold; '>eval</span> <span style='color:#0000e6; '>"$(ssh-agent -s)"</span>
+Agent pid <span style='color:#008c00; '>59566</span>
+</pre>
+                    <hr class="small"/>
+
+                    <li>Use <code>ssh-add</code> to add your SSH key to the <code>ssh-agent</code></li>
+<pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px'><span style='color:#797997; '>$</span> ssh-add ~<span style='color:#40015a; '>/</span><span style='color:#800000; font-weight:bold; '>.</span><span style='color:#40015a; '>ssh/id_rsa</span>
+</pre>
+                    <hr class="small"/>
+                </ol>
+                <hr class="small"/>
+
+                <h2 class="section-heading">Add the SSH key to your GitHub account.</h2>
+                <p>To configure your GitHub account to use your new (or existing) SSH key, you'll also need to add it to your GitHub account.</p>
+                <hr class="small"/>
+
+                <ol>
+                    <li>Copy the SSH key to your clipboard.</li>
+                    <pre style='color:#000000;background:#ffffff;border:1px solid #0085a1;margin-top:10px;margin-bottom:50px;font-size:18px'><span style='color:#797997; '>$</span> clip <span style='color:#e34adc; '>&lt;</span> ~<span style='color:#40015a; '>/</span><span style='color:#800000; font-weight:bold; '>.</span><span style='color:#40015a; '>ssh/id_rsa.pub</span>
+<span style='color:#696969; '># Copies the contents of the id_rsa.pub file to your clipboard</span>
+</pre>
+                    <hr class="small"/>
+
+                    <li>Login to <code><a href="https://github.com">Github</a></code> with your github account.</li>
+                    <hr class="small"/>
+
+                    <li>Click on your <code>profile photo</code> and then <code>Settings</code> as below.</li>
+                    <img class="img-responsive" style="margin-top: 10px;margin-bottom: 10px;" src="../../img/git/github-profile.PNG" alt="">
+                    <hr class="small"/>
+
+                    <li>Click on <code>SSH and GPG keys</code>  (Under left menu).</li>
+                    <img class="img-responsive" style="margin-top: 10px;margin-bottom: 10px;" src="../../img/git/github-profile-ssh-keys.PNG" alt="">
+                    <hr class="small"/>
+
+                    <li>Click on <code>New SSH Key</code> (On the right).</li>
+                    <img class="img-responsive" style="margin-top: 10px;margin-bottom: 10px;" src="../../img/git/github-profile-new-ssh-key.PNG" alt="">
+                    <hr class="small"/>
+
+                    <li>Provide suitable <code>Title</code> , paste your new SSH Key (which is already copied to clipboard) and then click on <code>Add SSH Key</code> (bottom).</code></li>
+                    <img class="img-responsive" style="margin-top: 10px;margin-bottom: 10px;" src="../../img/git/github-profile-paste-ssh-key.PNG" alt="">
+                    <hr class="small"/>
+
+                    <li>Provide password (which was used to generate SSH key), if prompted.</li>
+                    <hr class="small"/>
+
+                    <li>If you have reached to this step, it means you have generated new SSH key using git bash and added to your github account successfully.</li>
+                    <hr class="small"/>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="../../js/jqBootstrapValidation.js"></script>
+<script src="../../js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="../../js/clean-blog.min.js"></script>
+
+</body>
+</html>

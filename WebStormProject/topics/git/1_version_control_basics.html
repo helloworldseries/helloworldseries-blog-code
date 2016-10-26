@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>GIT - What is it and Why should I care?</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../../css/clean-blog.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--<script type="text/javascript">optimizeYouTubeEmbeds()</script>-->
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="../../index.html">Arpit Jain Bio</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="../../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="posts_git.html">GIT</a>
+                </li>
+                <li>
+                    <a href="../maven/posts_maven.html">Maven</a>
+                </li>
+                <li>
+                    <a href="../j2ee/posts_j2ee.html">J2EE</a>
+                </li>
+                <li>
+                    <a href="posts_tomcat.html">Java Collections</a>
+                </li>
+                <li>
+                    <a href="posts_protractor.html">Protractor</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<hr class="small">
+<hr class="small">
+<hr class="small">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-">
+                <div class="post-heading">
+                    <h1>Let's understand basics first.</h1>
+                    <span class="meta">Posted by <a href="#">Arpit Jain</a> on August 09, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                <h2 class="section-heading">Problem Statement</h2>
+                <p>If you are a developer and want to keep every version of a file (which you would most certainly want to), a Version Control System (VCS) is required. What are the choices you have?</p>
+
+                <h2 class="section-heading">What is Version Control</h2>
+                <p>Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.</p>
+                <p>This so called "Version Control System (VCS)" needs to be a software or a manual one, let's evaluate.</p>
+                <h2 class="section-heading">Solution 1 - Maintain changes locally</h2>
+
+                <ul>
+                    <li>I can maintain all the version of a single file myself, like saving files with numbers (some ordering) or timestamp at the end.</li>
+                    <li>Saving each file into a separate directory (Create directory with timestamp)</li>
+                </ul>
+                <p>This solution (not scalable, error prone, pretty risky for loosing changes may be called "Manual Local Version Control System", though no official name for this approach.</p>
+
+                <h2 class="section-heading">Problem(s) with this Solution - "Many"</h2>
+                <p>This approach is very common because it is so simple but poses these risks.</p>
+                <ul>
+                    <li>Easy to forget which directory you’re in and accidentally write to the wrong file or copy over files you don’t mean to.</li>
+                    <li>May work for small number of files but even with small no. of files, this is error prone.</li>
+                    <li>If any other developer needs a particular version, then you can share over email or shared drive or some other better way.</li>
+                    <li>Not scalable</li>
+                    <li>Changes can be lost easily</li>
+                    <li>Whenever you have the entire history of the project in a single place, you risk losing everything.</li>
+                </ul>
+
+
+                <h2 class="section-heading">Solution 2 - Maintain changes locally with some system like database</h2>
+                <p>
+                To get of rid of above issues, programmers long ago developed local Version Control Systems that had a simple database keeping all the changes to files under revision control.
+                </p>
+                <p>In below example, there are 3 developers - A, B & C.</p>
+                </p>
+                <p>Each one of them is working on a C Hello World program, which prints numbers. Observe carefully their programs. With locally managed database, each one of them is not aware about the changes being made by other developer.</p>
+                <p></p>
+                <h2 class="section-heading">Problem with this Solution - No collaboration</h2>
+                <p>Clear evident from below setup that having Version Control Systems (database or any other system) on individual developer's machine lacks collaboration among developers.</p>
+                <img class="img-responsive" src="../../img/git/local.PNG" alt="">
+                <p class="caption">Manage changes locally</p>
+                <hr class="small">
+                <h2 class="section-heading">Solution 3 - Manage changes centrally</h2>
+                <p>To deal with collaboration problem, Centralized Version Control Systems (CVCSs) were developed. These systems, such as CVS, Subversion, and Perforce.</p>
+                <img class="img-responsive" src="../../img/git/central.PNG" alt="">
+                <p class="caption">Manage changes centrally</p>
+                <p>Centralized system works because of it's simplicity, backup, undo and synchronization.</p>
+                <p>This setup offers many advantages, especially over local VCSs. For example, everyone knows to a certain level what everyone is doing. Administrators have fine-grained control over who can do what; and it’s far easier to administer a Central VCS than to local databases on every client.</p>
+
+
+                <h2 class="section-heading">CVCSs Workflow</h2>
+                <ul>
+                    <li>Pull down/Update your local copy with any changes other people have made from the central server.</li>
+                    <li>Make your changes, and make sure they work properly.</li>
+                    <li>Commit your changes to the central server, so other programmers can see them.</li>
+                </ul>
+
+                <h2 class="section-heading">Problems with CVCS</h2>
+
+                <p>CVCS isn’t great for merging and branching changes people make. As projects grow, you want to split features into chunks, developing and testing in isolation and slowly merging changes into the main line. In reality, branching is cumbersome, so new features may come as a giant checkin, making changes difficult to manage and untangle if they go awry.</p>
+                <p>Merging is definitely “possible” in a CVCS, but it’s not easy: you often need to track the merge yourself to avoid making the same change twice. Distributed systems make branching and merging painless because they rely on it.</p>
+                <span>If centralized server goes down for an hour, then during that time nobody can collaborate at all or save versioned changes to anything they’re working on. </span>
+                <h2 class="section-heading">Distributed Version Control (DVCSs)</h2>
+                <img class="img-responsive" src="../../img/git/dvcs.PNG" alt="">
+                <p class="caption">Manage changes in Distributed fashion</p>
+                <p>This is where Distributed Version Control Systems (DVCSs) step in. In a DVCS (such as Git, Mercurial, Bazaar or Darcs).</p>
+                <p>Clients don’t just check out the latest snapshot of the files: they fully mirror the repository. Thus if any server dies, and these systems were collaborating via it, any of the client repositories can be copied back up to the server to restore it. Every clone is really a full backup of all the data</p>
+                <h2 class="section-heading">Advantages of DVCSs over CVCSs</h2>
+                <ul>
+                    <li>Everyone has a local sandbox. You can make changes and roll back, all on your local machine. No more giant checkins; your incremental history is in your repo.</li>
+                    <li>It works offline. You only need to be online to share changes. Otherwise, you can happily stay on your local machine, checking in and undoing, no matter if the “server” is down or you’re on an airplane.</li>
+                    <li>It’s fast. Diffs, commits and reverts are all done locally. There’s no shaky network or server to ask for old revisions from a year ago.</li>
+                    <li>It handles changes well. Distributed version control systems were built around sharing changes. Every change has a guid which makes it easy to track.</li>
+                    <li>Branching and merging is easy. Because every developer “has their own branch”, every shared change is like reverse integration. But the guids make it easy to automatically combine changes and avoid duplicates.</li>
+                    <li>Less management. Distributed VCSes are easy to get running; there’s no “always-running” server software to install. Also, DVCSes may not require you to “add” new users; you just pick what URLs to pull from. This can avoid political headaches in large projects.</li>
+                </ul>
+                <h2 class="section-heading">Finally...</h2>
+                Version control systems aim to solve a specific problem that programmers face: “storing and sharing multiple versions of code files.” If you’re a programmer of any kind and you don’t use any kind of version control, you should start right now. It will make your life easier.
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="../../js/jqBootstrapValidation.js"></script>
+<script src="../../js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="../../js/clean-blog.min.js"></script>
+
+</body>
+</html>
